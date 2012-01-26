@@ -1,0 +1,18 @@
+[submodule "zencoding"]
+	path = zencoding
+	url = git://github.com/mattn/zencoding-vim.git
+[submodule "coffeScript-VIM-Snippets"]
+	path = coffeScript-VIM-Snippets
+	url = git://github.com/carlosvillu/coffeScript-VIM-Snippets.git
+[submodule "vim-preview"]
+	path = vim-preview
+	url = git://github.com/greyblake/vim-preview.git
+[submodule "vimwiki"]
+	path = vimwiki
+	url = https://github.com/vim-scripts/vimwiki.git
+[submodule "html5.vim"]
+	path = html5.vim
+	url = git://github.com/othree/html5.vim.git
+[submodule "vim-autoclose"]
+	path = vim-autoclose
+	url = git://github.com/Townk/vim-autoclose.git
