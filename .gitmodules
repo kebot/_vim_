@@ -16,3 +16,6 @@
 [submodule "vim-autoclose"]
 	path = vim-autoclose
 	url = git://github.com/Townk/vim-autoclose.git
+[submodule "Vim-Jinja2-Syntax"]
+	path = Vim-Jinja2-Syntax
+	url = git://github.com/Glench/Vim-Jinja2-Syntax.git
