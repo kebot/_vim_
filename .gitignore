@@ -1,0 +1,14 @@
+###################
+*.pyc
+*.class
+
+# OS Generated files #
+######################
+*.DS_Store
+# Compiled Source #
+
+# Database
+#####################
+*_db
+
+/static/upload/*
