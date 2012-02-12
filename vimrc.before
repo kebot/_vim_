@@ -1,0 +1,5 @@
+" pre key-bindings
+let mapleader=','
+
+" disable plugins
+ call janus#disable_plugin('snipmate-snippets')
