@@ -1,10 +1,10 @@
-set guioptions=aAce
 
 " Configure for VIM Blog
-let VIMPRESS=[{'username':'keith',
-              \'password':'74xhJKLDUvyfz',
-              \'blog_url':'http://kebot.me/'
-               \}]
+
+"let VIMPRESS=[{'username':'username',
+              "\'password':'password',
+              "\'blog_url':'http://kebot.me/'
+               "\}]
 
 " {{{ Python
 "
@@ -58,7 +58,6 @@ function! Refresh_Chrome()
 python << EOF
 import sys
 sys.path.append('/Users/Kebot/Python/Envs/dev/lib/python2.7/site-packages/')
-
 try:
     import appscript
     appscript.app("Google Chrome").windows[0].active_tab.reload()
@@ -67,8 +66,6 @@ except:
     print 'path is',sys.path
 EOF
 endfunction
-
-
 
 " Py Dictionary
 " let g:pydiction_location="~/.vim/bundle/pydiction/complete-dict"
@@ -79,7 +76,6 @@ let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 
 " Default gui color scheme
 " color ir_black
-
 let vimrplugin_screenplugin = 0
 
 autocmd FileType python setlocal omnifunc=pysmell#Complete
@@ -94,13 +90,13 @@ au FileType markdown map <D-r> :PreviewMarkdown <Enter>
 "
 "
 if has('gui_running')
+    set guioptions=aAce
     colorscheme solarized
     syntax enable
     set transparency=5
     set guifont=Monaco:h14
     set guioptions=aAce
     set background=dark
-
     " key mappings
     """"""""""""""""""""""""
     map <D-CR> :set invfu<CR>
@@ -112,3 +108,7 @@ if has('gui_running')
     " set imactivatekey=S
     " inoremap <ESC> <ESC>:set iminsert=0<CR>
 endif
+
+" set file encodings
+let &termencoding=&encoding
+set fileencodings=utf-8,gbk,ucs-bom,cp936
