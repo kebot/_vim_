@@ -1,9 +1,6 @@
 [submodule "zencoding"]
 	path = zencoding
 	url = git://github.com/mattn/zencoding-vim.git
-[submodule "coffeScript-VIM-Snippets"]
-	path = coffeScript-VIM-Snippets
-	url = git://github.com/carlosvillu/coffeScript-VIM-Snippets.git
 [submodule "vim-preview"]
 	path = vim-preview
 	url = git://github.com/greyblake/vim-preview.git

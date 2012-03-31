@@ -1,10 +1,14 @@
+" global variable
+let g:snips_author='Keith Yao'
+let g:snips_email ='i@yaofur.com'
+let g:snips_url ='http://kebot.me/'
 
-" Configure for VIM Blog
-
-"let VIMPRESS=[{'username':'username',
-              "\'password':'password',
-              "\'blog_url':'http://kebot.me/'
-               "\}]
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VIM WIKI Configuration
+let g:vimwiki_use_mouse = 1
+let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki',
+\ 'path_html': '~/Dropbox/vimwiki/html/',
+\ 'html_header': '~/Dropbox/vimwiki/template/header.tpl',}]
 
 " {{{ Python
 "
@@ -36,17 +40,40 @@ endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " use Pysmell as Complete 
-autocmd FileType python setlocal omnifunc=pysmell#Complete
-
+"autocmd FileType python setlocal omnifunc=pysmell#Complete
 " python }}}
 
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configure for Coffee Script
+"
 "  Compiler when save
-autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow | redraw!
-au BufNewFile,BufReadPost *.coffee setl foldmethod=indent
-"au BufNewFile,BufReadPost *.coffee CoffeeCompile watch vert
+"  if you have no vim-coffee-script installed
+"  au BufWritePost *.coffee silent :!coffee -c %
+"  options CoffeeMake options watch at `coffee -h`
+au BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
+"  fold by indentation in CoffeeScript files:
+au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+"  two-space indentation
 au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
+" CoffeeTags + TagBar
+" `coffeetags --vim-conf >> .vimrc.after`
+
+"if executable('coffeetags')
+  "let g:tagbar_type_coffee = {
+        "\ 'ctagsbin' : 'coffeetags',
+        "\ 'ctagsargs' : '',
+        "\ 'kinds' : [
+        "\ 'f:functions',
+        "\ 'o:object',
+        "\ ],
+        "\ 'sro' : ".",
+        "\ 'kind2scope' : {
+        "\ 'f' : 'object',
+        "\ 'o' : 'object',
+        "\ }
+        "\ }
+"endif
 
 
 " Configure for Web Files
