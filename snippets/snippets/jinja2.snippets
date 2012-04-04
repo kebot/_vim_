@@ -1,209 +1,69 @@
+# Template Inheritance
+snippet block
+	{% block ${1:main} %}${2}{% endblock %}
 
-# http://jinja.pocoo.org/
+snippet extends
+	{% extends "${1:base.html}" %}
 
-# jinja2 is a full featured template engine for Python. It has full
-# unicode support, an optional integrated sandboxed execution
-# environment, widely used and BSD licensed.
+# Including other template
+snippet include
+	{% include "${1:sidebar.html}" %}
 
-# possible extends:
-#extends html
+# Control Statements.
+snippet if
+	{% if ${1:#condition} %}
+		${2}
+	{% endif %}
 
+snippet elif
+	{% elif ${1:#condition} %}
 
-snippet block "block" b
-{% block ${1:name} %}
-    $2
-{% endblock $1 %}
-endsnippet
+snippet else
+	{% else %}
 
+snippet for
+	{% for ${1:value} in ${2:values} %}
+		${3}
+	{% endfor %}
 
-snippet {{ "variable" b
-{{ $1 }}
-endsnippet
+# Quick helper
+snippet %
+	{% ${1} %}
 
+snippet #
+	{# ${1} #}
 
-snippet {# "comment" b
-{# $1 #}
-endsnippet
+snippet todo
+	{# @TODO ${1:something} #}
 
+# test for `twig` only.
 
-snippet # "comment" b
-{# $1 #}
-endsnippet
+# test for `jinja` only.
+snippet raw
+	{% raw %}
+		${1}
+	{% endraw %}
 
+# {{{ loop statement
+snippet loop index: The current iteration of the loop. (1 indexed)
+	loop.index
 
-snippet raw "escaped block" b
-{% raw %}
-    $1
-{% endraw %}
-endsnippet
+snippet loop index0: The current iteration of the loop. (0 indexed)
+	loop.index0
 
+snippet loop revindexoindex: The number of iterations from the end of the loop (0 indexed)
+	loop.revindex
 
-snippet extends "extends" b
-{% extends "${1:template}" %}
-endsnippet
+snippet loop first: True if first iteration.
+	loop.first
 
+snippet loop last: True if last iteration.
+	loop.last
 
-snippet include "include" b
-{% include "${1:template}" %}
-endsnippet
+snippet loop length: The number of items in the sequence.
+	loop.length
 
+snippet loop cycle: A helper function to cycle between a list of sequences. See the explanation below.
+	loop.cycle(${1:'odd','even'})
+# }}}
 
-snippet import "import" b
-{% import "${1:template}" %}
-endsnippet
-
-
-snippet from "from/import/as" b
-{% from "${1:template}" import ${2:name}${3: as ${4:$2}} %}
-endsnippet
-
-
-snippet filter "filter" b
-{% filter ${1:filter} %}
-    $2
-{% endfilter %}
-endsnippet
-
-
-# Being able to quickly remove the whole 'else' block seems faster to me than
-# choosing between 'for' and 'for/else' snippets from the menu.
-# snippet for "for" b
-# {% for ${1:item} in ${2:sequence} %}
-#     $3${4:
-# {% else %}
-#     $5}
-# {% endfor %}
-# endsnippet
-
-
-snippet for "for" b
-{% for ${1:item} in ${2:sequence} %}
-    $3
-{% endfor %}
-endsnippet
-
-
-snippet for "for/else" b
-{% for ${1:item} in ${2:sequence} %}
-    $3
-{% else %}
-    $4
-{% endfor %}
-endsnippet
-
-
-snippet if "if" b
-{% if ${1:expr} %}
-    $2
-{% endif %}
-endsnippet
-
-
-snippet if "if/else" b
-{% if ${1:expr} %}
-    $2
-{% else %}
-    $3
-{% endif %}
-endsnippet
-
-
-snippet if "if/elif/else" b
-{% if ${1:expr} %}
-    $2
-{% elif %}
-    $3
-{% else %}
-    $4
-{% endif %}
-endsnippet
-
-
-snippet macro "macro" b
-{% macro ${1:name}(${2:args}) %}
-    $3
-{% endmacro %}
-endsnippet
-
-
-snippet call "call" b
-{% call ${1:name}(${2:args}) %}
-    $3
-{% endcall %}
-endsnippet
-
-
-snippet set "set" b
-{% set ${1:name} = ${2:'value'} %}
-endsnippet
-
-
-snippet trans "translation" b
-{% trans %}
-    $1
-{% endtrans %}
-endsnippet
-
-
-snippet with "with" b
-{% with %}
-    $1
-{% endwith %}
-endsnippet
-
-
-snippet autoescape "autoescape" b
-{% autoescape ${1:true} %}
-    $2
-{% endautoescape %}
-endsnippet
-
-# Filters 
-# @todo: expand only when snippet is preceeded by a |
-
-snippet batch "batch items" w
-batch(linecount=$1, fill_with=${2:None})
-endsnippet
-
-
-snippet dictsort "sort and yield (key, value) pairs" w
-dictsort(case_sensitive=${1:False}, by=${2:'key'})
-endsnippet
-
-
-snippet round "round number" w
-round(precision=${1:0}, method=${2:'common|ceil|floor'})
-endsnippet
-
-
-snippet urlize "convert plain-text url to <a/>" w
-urlize(trim_url_limit=${1:None}, nofollow=${2:False})
-endsnippet
-
-
-snippet wordwrap "wordwrap" w
-wordwrap(width=${1:79}, break_long_words=${2:True})
-endsnippet
-
-
-snippet truncate "truncate" w
-truncate(lenght=${1:79}, killwords=${2:False}, end=${3:'...''})
-endsnippet
-
-
-snippet sum "sum of sequence of numbers + start" w
-sum(attribute=${1:None}, start=${2:0})
-endsnippet
-
-
-snippet sort "sort an iterable" w
-sort(reverse=${1:False}, case_sensitive=${2:False}, attribute=${3:None})
-endsnippet
-
-
-snippet indent "indent" w
-indent(width=${1:4}, indentfirst=${2:False})
-endsnippet
-
-
-# vim:ft=snippets:
