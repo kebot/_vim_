@@ -19,3 +19,6 @@
 [submodule "vim-less"]
 	path = vim-less
 	url = git://github.com/groenewege/vim-less.git
+[submodule "cvim"]
+	path = cvim
+	url = git://github.com/vim-scripts/c.vim.git
