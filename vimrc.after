@@ -115,7 +115,8 @@ au FileType markdown map <D-r> :PreviewMarkdown <Enter>
 
 " gvim
 "
-"
+
+
 if has('gui_running')
     set guioptions=aAce
     colorscheme solarized
@@ -128,12 +129,12 @@ if has('gui_running')
     """"""""""""""""""""""""
     map <D-CR> :set invfu<CR>
     "toggle fullscreen mode
-
-
+    "
     " Change Input Method Configing
     " set noimd
-    " set imactivatekey=S
-    " inoremap <ESC> <ESC>:set iminsert=0<CR>
+     "set imactivatekey=C-space
+     "inoremap <ESC> <ESC>:set iminsert=2<CR>
+
 endif
 
 " set file encodings
