@@ -22,3 +22,6 @@
 [submodule "cvim"]
 	path = cvim
 	url = git://github.com/vim-scripts/c.vim.git
+[submodule "a-vim"]
+	path = a-vim
+	url = git://github.com/vim-scripts/a.vim.git
