@@ -25,3 +25,6 @@
 [submodule "a-vim"]
 	path = a-vim
 	url = git://github.com/vim-scripts/a.vim.git
+[submodule "processing"]
+	path = processing
+	url = git://github.com/sophacles/vim-processing.git
