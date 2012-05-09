@@ -1,5 +1,9 @@
 " pre key-bindings
 let mapleader=','
 
+" common vim key binding (not for plugins)
+" in MacOSX use Apple-i to leave the insert mode.
+imap <D-i> <ESC>
+
 " disable plugins
  call janus#disable_plugin('snipmate-snippets')
