@@ -6,16 +6,21 @@ let g:snips_url ='http://kebot.me/'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM WIKI Configuration
 let g:vimwiki_use_mouse = 1
-let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki',
-\ 'path_html': '~/Dropbox/vimwiki/html/',
-\ 'html_header': '~/Dropbox/vimwiki/template/header.tpl',}]
+let g:vimwiki_list = [{'path': '~/Google Drive/vimwiki',
+\ 'index': 'Home',
+\ 'ext': '.md',
+\ 'syntax': 'markdown',
+\ 'path_html': '~/Google Drive/vimwiki/html/',
+\ 'html_header': '~/Google Drive/vimwiki/template/header.tpl',}]
 
 " {{{ Python
 "
 " Configure for Python
 " !source ~/.zshrc
 
-au FileType python map <D-r> :!/usr/bin/env python % <Enter>
+" au FileType python map <D-r> :!/usr/bin/env python % <Enter>
+au FileType python map <D-r> :!/usr/local/bin/python % <Enter>
+
 " Function to ativate a virtualenv in the embedded interpreter for
 " omnicomplete and other things like that.
 function LoadVirtualEnv(path)
@@ -122,7 +127,8 @@ if has('gui_running')
     colorscheme solarized
     syntax enable
     set transparency=5
-    set guifont=Monaco:h14
+    " set guifont=Monaco:h14
+    set guifont=Meslo\ LG\ M\ DZ:h14
     set guioptions=aAce
     set background=dark
     " key mappings
