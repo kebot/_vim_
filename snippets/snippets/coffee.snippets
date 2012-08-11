@@ -9,9 +9,9 @@ snippet doc
 # Class
 snippet cl
 	# ${4:docstring for $1}
-	class ${1:name}
-		constructor: (${2:params...}) ->
-			${3://body...}
+	class ${1:name}${2: extends $3}
+		constructor: (${4:params...}) ->
+			${5:# body...}
 
 # Funcion / use python's def
 snippet func
@@ -22,7 +22,7 @@ snippet func
 snippet def
 	# ${4: docstring for $1}
 	${1:fname}: (${2:arguments})->
-		${3: //body}
+		${3: # body}
 
 snippet log
 	console.log "${1:Debug messages...}"
@@ -157,3 +157,15 @@ snippet expcallw
 
 snippet expncallw
 	expect(${1:predicate}).wasNotCalledWith ${2:arguments}
+
+snippet defineC
+	define (${1:require, exports, module})->
+		${2}
+
+snippet define
+	define '${1: modulename}', [${2:'models'...}], (${3})->
+	  ${4}
+		
+
+snippet req
+	${1:package} = require '$1'

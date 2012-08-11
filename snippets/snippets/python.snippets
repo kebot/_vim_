@@ -10,7 +10,7 @@ snippet docs
 	'''
 	File: ${1:`Filename('$1.py', 'foo.py')`}
 	Author: ${2:`g:snips_author`} <${4:`g:snips_email`}>
-	Description: ${3}
+	Description: ${3:>>> doctest also welcomed!}
 	'''
 snippet wh
 	while ${1:condition}:
@@ -138,3 +138,9 @@ snippet testcase
 			${3:pass}
 snippet fut
 	from __future__ import ${1}
+
+snippet doctest
+	if __name__ == '__main__':
+		import doctest
+		doctest.testmod()
+

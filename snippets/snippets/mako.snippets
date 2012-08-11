@@ -52,3 +52,8 @@ snippet namespace
 	<%namespace file="${1:name}" />
 snippet page
 	<%page args="${1:}" />
+snippet block
+	<%block name="${1:header}">
+	${2://something here}
+	</%block>
+

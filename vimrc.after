@@ -49,13 +49,20 @@ endif
 " python }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configure for Coffee Script
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "
 "  Compiler when save
 "  if you have no vim-coffee-script installed
 "  au BufWritePost *.coffee silent :!coffee -c %
 "  options CoffeeMake options watch at `coffee -h`
-au BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
+
+" @TODO uncomment below to auto-compiler the page.
+"au BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
+au FileType coffee map <D-b> silent CoffeeMake! | cwindow | redraw!
+
 "  fold by indentation in CoffeeScript files:
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
 "  two-space indentation
@@ -105,6 +112,17 @@ endfunction
 " extend ctags
 let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic-Options
+" see: `help syntastic`
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" If enabled, syntastic will do syntax checks when buffers are first loaded as
+" well as on saving
+let g:syntastic_check_on_open=0
+" /// disable auto check, use keybinding.
+map <Leader>s :SyntasticCheck <Enter>
+map <Leader>ts :SyntasticToggleMode <Enter>
 
 " Default gui color scheme
 " color ir_black
@@ -120,8 +138,6 @@ au FileType markdown map <D-r> :PreviewMarkdown <Enter>
 
 " gvim
 "
-
-
 if has('gui_running')
     set guioptions=aAce
     colorscheme solarized

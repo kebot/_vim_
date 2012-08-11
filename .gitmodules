@@ -28,3 +28,12 @@
 [submodule "processing"]
 	path = processing
 	url = git://github.com/sophacles/vim-processing.git
+[submodule "vim-bundle-mako"]
+	path = vim-bundle-mako
+	url = git://github.com/sophacles/vim-bundle-mako.git
+[submodule "vim-jade"]
+	path = vim-jade
+	url = git://github.com/digitaltoad/vim-jade.git
+[submodule "evervim"]
+	path = evervim
+	url = git://github.com/zhaocai/evervim.git
