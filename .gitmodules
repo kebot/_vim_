@@ -36,4 +36,7 @@
 	url = git://github.com/digitaltoad/vim-jade.git
 [submodule "evervim"]
 	path = evervim
-	url = git://github.com/zhaocai/evervim.git
+  url = git://github.com/kakkyz81/evervim.git
+[submodule "jedi-vim"]
+	path = jedi-vim
+	url = git://github.com/davidhalter/jedi-vim.git

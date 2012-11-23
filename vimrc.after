@@ -13,6 +13,12 @@ let g:vimwiki_list = [{'path': '~/Google Drive/vimwiki',
 \ 'path_html': '~/Google Drive/vimwiki/html/',
 \ 'html_header': '~/Google Drive/vimwiki/template/header.tpl',}]
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configuration for Evervim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" get dev-token from [DeveloperToken](https://www.evernote.com/api/DeveloperToken.action)
+let g:evervim_devtoken='S=s4:U=a6472:E=14221f94585:C=13aca481985:P=1cd:A=en-devtoken:H=d8de32623b47e4bae6941e2876a8eaff'
+
 " {{{ Python
 "
 " Configure for Python
@@ -44,9 +50,10 @@ if has("python")
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" use Pysmell as Complete 
-"autocmd FileType python setlocal omnifunc=pysmell#Complete
-" python }}}
+" python jedi
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:jedi#related_names_command = "<leader>a"
+let g:jedi#popup_on_dot = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -128,13 +135,17 @@ map <Leader>ts :SyntasticToggleMode <Enter>
 " color ir_black
 let vimrplugin_screenplugin = 0
 
-autocmd FileType python setlocal omnifunc=pysmell#Complete
-
 " gUndo Document is here http://sjl.bitbucket.org/gundo.vim/
 nnoremap <F5> :GundoToggle<CR>
 
 " Markdown Preview
 au FileType markdown map <D-r> :PreviewMarkdown <Enter>
+
+" NERDTree
+
+let loaded_nerd_tree = 1
+let NERDTreeChDirMode = 2
+let NERDTreeMinimalUI = 1
 
 " gvim
 "
@@ -144,7 +155,8 @@ if has('gui_running')
     syntax enable
     set transparency=5
     " set guifont=Monaco:h14
-    set guifont=Meslo\ LG\ M\ DZ:h14
+    " set guifont=Meslo\ LG\ M\ DZ:h14
+    set guifont=Source\ Code\ Pro\ ExtraLight:h14
     set guioptions=aAce
     set background=dark
     " key mappings

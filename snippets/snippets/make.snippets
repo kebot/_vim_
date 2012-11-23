@@ -1,3 +1,10 @@
+snippet #!
+	#
+	# Makefile for Public resources
+	#
+	.PHONY : ${1:clean}
+
+
 snippet ifeq
 	ifeq (${1:cond0},${2:cond1})
 		${3:code}
