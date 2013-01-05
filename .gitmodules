@@ -37,3 +37,6 @@
 [submodule "evervim"]
 	path = evervim
 	url = git://github.com/zhaocai/evervim.git
+[submodule "vim-golang"]
+	path = vim-golang
+	url = git://github.com/jnwhiteh/vim-golang.git
