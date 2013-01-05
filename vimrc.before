@@ -7,3 +7,5 @@ imap <D-i> <ESC>
 
 " disable plugins
  call janus#disable_plugin('snipmate-snippets')
+ call janus#disable_plugin('vroom')
+

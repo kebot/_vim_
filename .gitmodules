@@ -40,3 +40,6 @@
 [submodule "vim-golang"]
 	path = vim-golang
 	url = git://github.com/jnwhiteh/vim-golang.git
+[submodule "jedi-vim"]
+	path = jedi-vim
+	url = git://github.com/davidhalter/jedi-vim.git

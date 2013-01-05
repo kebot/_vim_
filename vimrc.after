@@ -1,3 +1,7 @@
+" Current Operation System
+let os = substitute(system('uname'), "\n", "", "")
+" echo os
+
 " global variable
 let g:snips_author='Keith Yao'
 let g:snips_email ='i@yaofur.com'
@@ -5,13 +9,21 @@ let g:snips_url ='http://kebot.me/'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM WIKI Configuration
-let g:vimwiki_use_mouse = 1
-let g:vimwiki_list = [{'path': '~/Google Drive/vimwiki',
-\ 'index': 'Home',
+let g:vimwiki_list = [{'index': 'Index',
 \ 'ext': '.md',
 \ 'syntax': 'markdown',
-\ 'path_html': '~/Google Drive/vimwiki/html/',
-\ 'html_header': '~/Google Drive/vimwiki/template/header.tpl',}]
+\ 'path': '~/vimwiki',
+\ 'path_html': '~/vimwiki/html/',
+\ 'html_header': '~/vimwiki/template/header.tpl',}]
+let g:vimwiki_use_mouse = 1
+
+"if os == 'Linux'
+  "let g:vimwiki_list['path'] = '~/vimwiki'
+"elseif os == 'Darwin'
+  "let g:vimwiki_list['path'] = '~/Google Drive/vimwiki'
+"endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " {{{ Python
 "
@@ -44,10 +56,10 @@ if has("python")
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" use Pysmell as Complete 
-"autocmd FileType python setlocal omnifunc=pysmell#Complete
-" python }}}
+" use jedi as Complete 
+let g:jedi#related_names_command = "<leader>w"
 
+" python }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -70,7 +82,6 @@ au BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
 
 " CoffeeTags + TagBar
 " `coffeetags --vim-conf >> .vimrc.after`
-
 "if executable('coffeetags')
   "let g:tagbar_type_coffee = {
         "\ 'ctagsbin' : 'coffeetags',
@@ -125,10 +136,12 @@ map <Leader>s :SyntasticCheck <Enter>
 map <Leader>ts :SyntasticToggleMode <Enter>
 
 " Default gui color scheme
-" color ir_black
+set t_Co=256
+colorscheme molokai
+
 let vimrplugin_screenplugin = 0
 
-autocmd FileType python setlocal omnifunc=pysmell#Complete
+" autocmd FileType python setlocal omnifunc=pysmell#Complete
 
 " gUndo Document is here http://sjl.bitbucket.org/gundo.vim/
 nnoremap <F5> :GundoToggle<CR>
@@ -138,27 +151,9 @@ au FileType markdown map <D-r> :PreviewMarkdown <Enter>
 
 " gvim
 "
-if has('gui_running')
-    set guioptions=aAce
-    colorscheme solarized
-    syntax enable
-    set transparency=5
-    " set guifont=Monaco:h14
-    set guifont=Meslo\ LG\ M\ DZ:h14
-    set guioptions=aAce
-    set background=dark
-    " key mappings
-    """"""""""""""""""""""""
-    map <D-CR> :set invfu<CR>
-    "toggle fullscreen mode
-    "
-    " Change Input Method Configing
-    " set noimd
-     "set imactivatekey=C-space
-     "inoremap <ESC> <ESC>:set iminsert=2<CR>
-
-endif
 
 " set file encodings
 let &termencoding=&encoding
 set fileencodings=utf-8,gbk,ucs-bom,cp936
+
+
