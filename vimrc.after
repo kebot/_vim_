@@ -1,3 +1,7 @@
+" diable error sounds
+set noerrorbells
+set novisualbell
+
 " global variable
 let g:snips_author='Keith Yao'
 let g:snips_email ='i@yaofur.com'
@@ -52,10 +56,18 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " python jedi
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:jedi#related_names_command = "<leader>a"
-let g:jedi#popup_on_dot = 1
+" Jedi is by default automatically initialized.
+let g:jedi#auto_initialization = 0
 
+let g:jedi#related_names_command = "<leader>a"
+
+" Jedi automatically starts the completion,
+" if you type a dot, e.g. `str.`, if you don't want this:
+let g:jedi#popup_on_dot = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" highlight reStructuredText in python docstring.
+let g:riv_python_rst_hl=1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configure for Coffee Script

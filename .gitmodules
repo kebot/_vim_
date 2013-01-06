@@ -40,3 +40,9 @@
 [submodule "jedi-vim"]
 	path = jedi-vim
 	url = git://github.com/davidhalter/jedi-vim.git
+[submodule "conque-term"]
+	path = conque-term
+	url = git://github.com/rosenfeld/conque-term.git
+[submodule "riv.vim"]
+	path = riv.vim
+	url = git://github.com/Rykka/riv.vim.git
