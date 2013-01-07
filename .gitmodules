@@ -46,3 +46,6 @@
 [submodule "riv.vim"]
 	path = riv.vim
 	url = git://github.com/Rykka/riv.vim.git
+[submodule "vim-golang"]
+	path = vim-golang
+	url = git://github.com/jnwhiteh/vim-golang.git

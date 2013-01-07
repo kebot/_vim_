@@ -1,0 +1,30 @@
+" Color Scheme
+syntax enable
+set guioptions=aAce
+
+" colorscheme twilight
+" colorscheme molokai
+colorscheme ir_black
+
+"" Configuration for MacVIM
+if has("gui_macvim")
+  set transparency=5
+  colorscheme solarized
+  set background=dark
+endif
+
+" set guifont=Monaco:h14
+" set guifont=Meslo\ LG\ M\ DZ:h14
+set guifont=Meslo\ LG\ M\ DZ\ 10
+
+" key mappings
+""""""""""""""""""""""""
+map <D-CR> :set invfu<CR>
+"toggle fullscreen mode
+
+" Change Input Method Configing
+" set noimd
+" set imactivatekey=C-space
+" inoremap <ESC> <ESC>:set iminsert=2<CR>
+
+
