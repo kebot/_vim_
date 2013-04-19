@@ -2,6 +2,28 @@
 let os = substitute(system('uname'), "\n", "", "")
 " echo os
 
+" imap ii (
+" imap oo {
+
+" Custom key-mapping
+imap <c-h> <left>
+imap <c-j> <down>
+imap <c-k> <up>
+imap <c-l> <right>
+
+nmap <s-h> :wincmd h <CR>
+nmap <s-j> :wincmd j <CR>
+nmap <s-k> :wincmd k <CR>
+nmap <s-l> :wincmd l <CR>
+
+" powerline support
+python << EOF
+import sys
+sys.path.insert(0, '/usr/local/lib/python2.7/site-packages/')
+from powerline.bindings.vim import source_plugin
+source_plugin()
+EOF
+
 " diable error sounds
 set noerrorbells
 set novisualbell
@@ -10,6 +32,9 @@ set novisualbell
 let g:snips_author='Keith Yao'
 let g:snips_email ='i@yaofur.com'
 let g:snips_url ='http://kebot.me/'
+
+" ack.vim
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " VIM WIKI Configuration
@@ -40,30 +65,7 @@ let g:evervim_devtoken='S=s4:U=a6472:E=14221f94585:C=13aca481985:P=1cd:A=en-devt
 " Configure for Python
 " !source ~/.zshrc
 
-" au FileType python map <D-r> :!/usr/bin/env python % <Enter>
 au FileType python map <D-r> :!/usr/local/bin/python % <Enter>
-
-" Function to ativate a virtualenv in the embedded interpreter for
-" omnicomplete and other things like that.
-function LoadVirtualEnv(path)
-    let activate_this = a:path . '/bin/activate_this.py'
-    if getftype(a:path) == "dir" && filereadable(activate_this)
-        python << EOF
-import vim
-activate_this = vim.eval('l:activate_this')
-execfile(activate_this, dict(__file__=activate_this))
-EOF
-    endif
-endfunction
-" Load up a 'stable' virtualenv if one exists in ~/.virtualenv
-let defaultvirtualenv = $HOME . "/.virtualenvs/stable"
-" Only attempt to load this virtualenv if the defaultvirtualenv
-" actually exists, and we aren't running with a virtualenv active.
-if has("python")
-    if empty($VIRTUAL_ENV) && getftype(defaultvirtualenv) == "dir"
-        call LoadVirtualEnv(defaultvirtualenv)
-    endif
-endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " use jedi as Complete 
@@ -150,7 +152,8 @@ map <Leader>ts :SyntasticToggleMode <Enter>
 
 " Default gui color scheme
 set t_Co=256
-colorscheme molokai
+" colorscheme molokai
+colorscheme jellybeans
 
 let vimrplugin_screenplugin = 0
 
@@ -174,3 +177,13 @@ let NERDTreeMinimalUI = 1
 " set file encodings
 let &termencoding=&encoding
 set fileencodings=utf-8,gbk,ucs-bom,cp936
+
+" file formatter
+
+" javascript
+autocmd Filetype javascript noremap <buffer> <c-f> :call JsBeautify()<cr>
+" html
+autocmd FileType html noremap <buffer> <c-f> :call HtmlBeautify()<cr>
+" css or scss
+autocmd FileType css noremap <buffer> <c-f> :call CSSBeautify()<cr>
+

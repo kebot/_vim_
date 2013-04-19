@@ -49,3 +49,18 @@
 [submodule "vim-golang"]
 	path = vim-golang
 	url = git://github.com/jnwhiteh/vim-golang.git
+[submodule "vim-jsbeautify"]
+	path = vim-jsbeautify
+	url = git@github.com:maksimr/vim-jsbeautify.git
+[submodule "vim-stylus"]
+	path = vim-stylus
+	url = git@github.com:wavded/vim-stylus.git
+[submodule "mango.vim"]
+	path = mango.vim
+	url = git@github.com:goatslacker/mango.vim.git
+[submodule "powerline"]
+	path = powerline
+	url = git://github.com/Lokaltog/powerline.git
+[submodule "twilight.vim"]
+	path = twilight.vim
+	url = git@github.com:marcelbeumer/twilight.vim.git

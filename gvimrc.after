@@ -1,21 +1,20 @@
-" Color Scheme
 syntax enable
+" Color Scheme
 set guioptions=aAce
 
-" colorscheme twilight
 " colorscheme molokai
-colorscheme ir_black
 
 "" Configuration for MacVIM
 if has("gui_macvim")
-  set transparency=5
-  colorscheme solarized
+  set transparency=1
   set background=dark
+  set guifont=Source\ Code\ Pro\ for\ Powerline:h14
+  " set guifont=Meslo\ LG\ M\ DZ:h14
+  " set guifont=Monaco:h14
+  colorscheme twilight+
+else
+  set guifont=Meslo\ LG\ M\ DZ\ 10
 endif
-
-" set guifont=Monaco:h14
-" set guifont=Meslo\ LG\ M\ DZ:h14
-set guifont=Meslo\ LG\ M\ DZ\ 10
 
 " key mappings
 """"""""""""""""""""""""
@@ -26,5 +25,4 @@ map <D-CR> :set invfu<CR>
 " set noimd
 " set imactivatekey=C-space
 " inoremap <ESC> <ESC>:set iminsert=2<CR>
-
 
