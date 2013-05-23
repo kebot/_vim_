@@ -8,10 +8,14 @@ set guioptions=aAce
 if has("gui_macvim")
   set transparency=1
   set background=dark
-  set guifont=Source\ Code\ Pro\ for\ Powerline:h14
+  " set guifont=Source\ Code\ Pro\ for\ Powerline:h14
+  set guifont=Source\ Code\ Pro\ ExtraLight\ for\ Powerline:h14
   " set guifont=Meslo\ LG\ M\ DZ:h14
   " set guifont=Monaco:h14
-  colorscheme twilight+
+  " colorscheme twilight+
+  colorscheme Tomorrow-Night
+  " disable bellrings in macvim
+  set vb
 else
   set guifont=Meslo\ LG\ M\ DZ\ 10
 endif
@@ -25,4 +29,6 @@ map <D-CR> :set invfu<CR>
 " set noimd
 " set imactivatekey=C-space
 " inoremap <ESC> <ESC>:set iminsert=2<CR>
+
+
 
