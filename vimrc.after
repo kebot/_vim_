@@ -28,10 +28,17 @@ EOF
 set noerrorbells
 set novisualbell
 
-" global variable
+" snippets variables
 let g:snips_author='Keith Yao'
 let g:snips_email ='i@yaofur.com'
 let g:snips_url ='http://kebot.me/'
+
+"g:always_use_first_snippet
+
+let g:UltiSnipsSnippetsDir = '~/.janus/home/UltiSnips'
+let g:UltiSnipsSnippetDirectories = ["snippets"]
+let g:UltiSnipsDontReverseSearchPath="1"
+
 
 " ack.vim
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -68,8 +75,9 @@ let g:evervim_devtoken='S=s4:U=a6472:E=14221f94585:C=13aca481985:P=1cd:A=en-devt
 au FileType python map <D-r> :!/usr/local/bin/python % <Enter>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" use jedi as Complete 
+" use jedi as Complete
 let g:jedi#related_names_command = "<leader>w"
+
 
 " python }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

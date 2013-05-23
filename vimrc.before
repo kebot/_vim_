@@ -3,14 +3,18 @@ let mapleader=','
 
 " common vim key binding (not for plugins)
 " in MacOSX use Apple-i to leave the insert mode.
-imap <D-i> <ESC>
+" imap <D-i> <ESC>
 
 " enable mouse at terminal
 set mouse=a
 
-" disable plugins
-call janus#disable_plugin('snipmate-snippets')
+" disable plugins (we use ultisnipmate instead)
+call janus#disable_plugin('vim-snippets')
+call janus#disable_plugin('vim-snipmate')
+
 call janus#disable_plugin('vroom')
+
+" git://github.com/MarcWeber/ultisnips.git
 
 " it will slowdown vim
 " call janus#disable_plugin('jedi-vim')

@@ -1,108 +1,236 @@
-# Model Fields
+# Generic Tags
+snippet %
+{% ${1} %}${2}
+endsnippet
 
-# Note: Optional arguments are using defaults that match what Django will use
-# as a default, e.g. with max_length fields.  Doing this as a form of self
-# documentation and to make it easy to know whether you should override the
-# default or not.
+snippet %%
+{% ${1:tag_name} %}
+  ${2}
+{% end$1 %}
+endsnippet
 
-# Note: Optional arguments that are booleans will use the opposite since you
-# can either not specify them, or override them, e.g. auto_now_add=False.
+snippet {
+{{ ${1} }}${2}
+endsnippet
 
-snippet auto
-	${1:FIELDNAME} = models.AutoField()
-snippet bool
-	${1:FIELDNAME} = models.BooleanField(${2:default=True})
-snippet char
-	${1:FIELDNAME} = models.CharField(max_length=${2}${3:, blank=True})
-snippet comma
-	${1:FIELDNAME} = models.CommaSeparatedIntegerField(max_length=${2}${3:, blank=True})
-snippet date
-	${1:FIELDNAME} = models.DateField(${2:auto_now_add=True, auto_now=True}${3:, blank=True, null=True})
-snippet datetime
-	${1:FIELDNAME} = models.DateTimeField(${2:auto_now_add=True, auto_now=True}${3:, blank=True, null=True})
-snippet decimal
-	${1:FIELDNAME} = models.DecimalField(max_digits=${2}, decimal_places=${3})
-snippet email
-	${1:FIELDNAME} = models.EmailField(max_length=${2:75}${3:, blank=True})
-snippet file
-	${1:FIELDNAME} = models.FileField(upload_to=${2:path/for/upload}${3:, max_length=100})
-snippet filepath
-	${1:FIELDNAME} = models.FilePathField(path=${2:"/abs/path/to/dir"}${3:, max_length=100}${4:, match="*.ext"}${5:, recursive=True}${6:, blank=True, })
-snippet float
-	${1:FIELDNAME} = models.FloatField()
-snippet image
-	${1:FIELDNAME} = models.ImageField(upload_to=${2:path/for/upload}${3:, height_field=height, width_field=width}${4:, max_length=100})
-snippet int
-	${1:FIELDNAME} = models.IntegerField()
-snippet ip
-	${1:FIELDNAME} = models.IPAddressField()
-snippet nullbool
-	${1:FIELDNAME} = models.NullBooleanField()
-snippet posint
-	${1:FIELDNAME} = models.PositiveIntegerField()
-snippet possmallint
-	${1:FIELDNAME} = models.PositiveSmallIntegerField()
-snippet slug
-	${1:FIELDNAME} = models.SlugField(max_length=${2:50}${3:, blank=True})
-snippet smallint
-	${1:FIELDNAME} = models.SmallIntegerField()
-snippet text
-	${1:FIELDNAME} = models.TextField(${2:blank=True})
-snippet time
-	${1:FIELDNAME} = models.TimeField(${2:auto_now_add=True, auto_now=True}${3:, blank=True, null=True})
+# Template Tags
+
+snippet autoescape
+{% autoescape ${1:off} %}
+  ${2}
+{% endautoescape %}
+endsnippet
+
+snippet block
+{% block ${1} %}
+  ${2}
+{% endblock %}
+endsnippet
+
+snippet #
+{# ${1:comment} #}
+endsnippet
+
+snippet comment
+{% comment %}
+  ${1}
+{% endcomment %}
+endsnippet
+
+snippet cycle
+{% cycle ${1:val1} ${2:val2} ${3:as ${4}} %}
+endsnippet
+
+snippet debug
+{% debug %}
+endsnippet
+
+snippet extends
+{% extends "${1:base.html}" %}
+endsnippet
+
+snippet filter
+{% filter ${1} %}
+  ${2}
+{% endfilter %}
+endsnippet
+
+snippet firstof
+{% firstof ${1} %}
+endsnippet
+
+snippet for
+{% for ${1} in ${2} %}
+  ${3}
+{% endfor %}
+endsnippet
+
+snippet empty
+{% empty %}
+  ${1}
+endsnippet
+
+snippet if
+{% if ${1} %}
+  ${2}
+{% endif %}
+endsnippet
+
+snippet else
+{% else %}
+  ${1}
+endsnippet
+
+snippet ifchanged
+{% ifchanged %}${1}{% endifchanged %}
+endsnippet
+
+snippet ifequal
+{% ifequal ${1} ${2} %}
+  ${3}
+{% endifequal %}
+endsnippet
+
+snippet ifnotequal
+{% ifnotequal ${1} ${2} %}
+  ${3}
+{% endifnotequal %}
+endsnippet
+
+snippet include
+{% include "${1}" %}
+endsnippet
+
+snippet load
+{% load ${1} %}
+endsnippet
+
+snippet now
+{% now "${1:jS F Y H:i}" %}
+endsnippet
+
+snippet regroup
+{% regroup ${1} by ${2} as ${3} %}
+endsnippet
+
+snippet spaceless
+{% spaceless %}${1}{% endspaceless %}
+endsnippet
+
+snippet ssi
+{% ssi ${1} %}
+endsnippet
+
+snippet trans
+{% trans "${1:string}" %}
+endsnippet
+
 snippet url
-	${1:FIELDNAME} = models.URLField(${2:verify_exists=False}${3:, max_length=200}${4:, blank=True})
-snippet xml
-	${1:FIELDNAME} = models.XMLField(schema_path=${2:None}${3:, blank=True})
-# Relational Fields
-snippet fk
-	${1:FIELDNAME} = models.ForeignKey(${2:OtherModel}${3:, related_name=''}${4:, limit_choices_to=}${5:, to_field=''})
-snippet m2m
-	${1:FIELDNAME} = models.ManyToManyField(${2:OtherModel}${3:, related_name=''}${4:, limit_choices_to=}${5:, symmetrical=False}${6:, through=''}${7:, db_table=''})
-snippet o2o
-	${1:FIELDNAME} = models.OneToOneField(${2:OtherModel}${3:, parent_link=True}${4:, related_name=''}${5:, limit_choices_to=}${6:, to_field=''})
+{% url ${1} as ${2} %}
+endsnippet
 
-# Code Skeletons
+snippet widthratio
+{% widthratio ${1:this_value} ${2:max_value} ${3:100} %}
+endsnippet
 
-snippet form
-	class ${1:FormName}(forms.Form):
-		"""${2:docstring}"""
-		${3}
+snippet with
+{% with ${1} as ${2} %}
+endsnippet
 
-snippet model
-	class ${1:ModelName}(models.Model):
-		"""${2:docstring}"""
-		${3}
-		
-		class Meta:
-			${4}
-		
-		def __unicode__(self):
-			${5}
-		
-		def save(self, force_insert=False, force_update=False):
-			${6}
-		
-		@models.permalink
-		def get_absolute_url(self):
-			return ('${7:view_or_url_name}' ${8})
+# Template Filters
 
-snippet modeladmin
-	class ${1:ModelName}Admin(admin.ModelAdmin):
-		${2}
-	
-	admin.site.register($1, $1Admin)
-	
-snippet tabularinline
-	class ${1:ModelName}Inline(admin.TabularInline):
-		model = $1
+# Note: Since SnipMate can't determine which template filter you are
+# expanding without the "|" character, these do not add the "|"
+# character.  These save a few keystrokes still.
 
-snippet stackedinline
-	class ${1:ModelName}Inline(admin.StackedInline):
-		model = $1
+# Note: Template tags that take no arguments are not implemented.
 
-snippet r2r
-	return render_to_response('${1:template.html}', {
-			${2}
-		}${3:, context_instance=RequestContext(request)}
-	)
+snippet add
+add:"${1}"
+endsnippet
+
+snippet center
+center:"${1}"
+endsnippet
+
+snippet cut
+cut:"${1}"
+endsnippet
+
+snippet date
+date:"${1}"
+endsnippet
+
+snippet default
+default:"${1}"
+endsnippet
+
+snippet defaultifnone
+default_if_none:"${1}"
+endsnippet
+
+snippet dictsort
+dictsort:"${1}"
+endsnippet
+
+snippet dictsortrev
+dictsortreversed:"${1}"
+endsnippet
+
+snippet divisibleby
+divisibleby:"${1}"
+endsnippet
+
+snippet floatformat
+floatformat:"${1}"
+endsnippet
+
+snippet getdigit
+get_digit:"${1}"
+endsnippet
+
+snippet join
+join:"${1}"
+endsnippet
+
+snippet lengthis
+length_is:"${1}"
+endsnippet
+
+snippet pluralize
+pluralize:"${1}"
+endsnippet
+
+snippet removetags
+removetags:"${1}"
+endsnippet
+
+snippet slice
+slice:"${1}"
+endsnippet
+
+snippet stringformat
+stringformat:"${1}"
+endsnippet
+
+snippet time
+time:"${1}"
+endsnippet
+
+snippet truncatewords
+truncatewords:${1}
+endsnippet
+
+snippet truncatewordshtml
+truncatewords_html:${1}
+endsnippet
+
+snippet urlizetrunc
+urlizetrunc:${1}
+endsnippet
+
+snippet wordwrap
+wordwrap:${1}
+endsnippet
+
+# vim:ft=snippets:

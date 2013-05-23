@@ -64,3 +64,10 @@
 [submodule "twilight.vim"]
 	path = twilight.vim
 	url = git@github.com:marcelbeumer/twilight.vim.git
+[submodule "applescript.vim"]
+	path = applescript.vim
+	url = git@github.com:vim-scripts/applescript.vim.git
+[submodule "ultisnips"]
+	path = ultisnips
+	url = git://github.com/MarcWeber/ultisnips.git
+

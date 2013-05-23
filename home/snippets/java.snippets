@@ -1,165 +1,212 @@
-snippet main
-	public static void main (String[] args) {
-		${1:/* code */}
-	}
-snippet pu
-	public
-snippet po
-	protected
-snippet pr
-	private
-snippet st
-	static
-snippet fi
-	final
-snippet ab
-	abstract
-snippet re
-	return
-snippet br
-	break;
-snippet de
-	default:
-		${1}
-snippet ca
-	catch(${1:Exception} ${2:e}) ${3}
-snippet th
-	throw 
-snippet sy
-	synchronized
-snippet im
-	import
-snippet imp
-	implements
-snippet ext
-	extends 
-snippet j.u
-	java.util
-snippet j.i
-	java.io.
-snippet j.b
-	java.beans.
-snippet j.n
-	java.net.
-snippet j.m
-	java.math.
-snippet if
-	if (${1}) ${2}
-snippet el
-	else
-snippet elif
-	else if (${1}) ${2}
-snippet wh
-	while (${1}) ${2}
-snippet for
-	for (${1}; ${2}; ${3}) ${4}
-snippet fore
-	for (${1} : ${2}) ${3}
-snippet sw
-	switch (${1}) ${2}
-snippet cs
-	case ${1}:
-		${2}
-	${3}
-snippet tc
-	public class ${1:`Filename()`} extends ${2:TestCase}
-snippet t
-	public void test${1:Name}() throws Exception ${2}
-snippet cl
-	class ${1:`Filename("", "untitled")`} ${2}
-snippet in
-	interface ${1:`Filename("", "untitled")`} ${2:extends Parent}${3}
-snippet m
-	${1:void} ${2:method}(${3}) ${4:throws }${5}
-snippet v
-	${1:String} ${2:var}${3: = null}${4};${5}
-snippet co
-	static public final ${1:String} ${2:var} = ${3};${4}
-snippet cos
-	static public final String ${1:var} = "${2}";${3}
-snippet as
-	assert ${1:test} : "${2:Failure message}";${3}
-snippet try
-	try {
-		${3}
-	} catch(${1:Exception} ${2:e}) {
-	}
-snippet tryf
-	try {
-		${3}
-	} catch(${1:Exception} ${2:e}) {
-	} finally {
-	}
-snippet rst
-	ResultSet ${1:rst}${2: = null}${3};${4}
-snippet @au
-	@author `system("grep \`id -un\` /etc/passwd | cut -d \":\" -f5")`
-snippet mm
-	@ManyToMany
-	${1}
-snippet mo
-	@ManyToOne
-	${1}
-snippet om
-	OneToMany${1:(cascade=CascadeType.ALL)}
-	${2}
-snippet oo
-	@OneToOne
-	${1}
-snippet action
-	public static void ${1:index}(${2:args}) { ${3} }
-snippet before
-	@Before
-	static void ${1:intercept}(${2:args}) { ${3} }
-snippet debug
-	Logger.debug(${1:param});${2}
-snippet error
-	Logger.error(${1:param});${2}
-snippet findall
-	List<${1:listName}> ${2:items} = ${1}.findAll();${3}
-snippet findbyid
-	${1:var} ${2:item} = ${1}.findById(${3});${4}
-snippet info
-	Logger.info(${1:param});${2}
-snippet rnf
-	notFound(${1:param});${2}
-snippet rnfin
-	notFoundIfNull(${1:param});${2}
-snippet rr
-	redirect(${1:param});${2}
-snippet ru
-	unauthorized(${1:param});${2}
-snippet ren
-	render(${1:param});${2}
-snippet rena
-	renderArgs.put("${1}", ${2});${3}
-snippet renb
-	renderBinary(${1:param});${2}
-snippet renj
-	renderJSON(${1:param});${2}
-snippet renx
-	renderXml(${1:param});${2}
-snippet unless
-	(unless=${1:param});${2}
-snippet warn
-	Logger.warn(${1:param});${2}
-snippet sysout
-	System.out.println(${1});
-snippet syserr
-	System.err.println(${1});
-snippet /*
-	/*
-	 * ${1}
-	 */
-snippet /**
-	/**
-	 * ${1}
-	 */
-snippet prop
-	$1 void set$3($2 $4){
-		this.$4 = $4;
-	}
+###########################################################################
+#                            TEXTMATE SNIPPETS                            #
+###########################################################################
 
-	${1:public} ${2:String} get${3:}(){
-		return this.${4:};
-	}
+# Many of the snippets here use a global option called
+# "g:ultisnips_java_brace_style" which, if set to "nl" will put a newline
+# before '{' braces.
+
+global !p
+def nl(snip):
+    if snip.opt("g:ultisnips_java_brace_style", "") == "nl":
+        snip += ""
+    else:
+        snip.rv += " "
+endglobal
+
+snippet ab "abstract" b
+abstract 
+endsnippet
+
+snippet as "assert" b
+assert ${1:test}${2/(.+)/(?1: \: ")/}${2:Failure message}${2/(.+)/(?1:")/};$0
+endsnippet
+
+snippet br "break"
+break;
+
+endsnippet
+
+snippet cs "case" b
+case $1:
+	$2
+$0
+endsnippet
+
+snippet ca "catch" b
+catch (${1:Exception} ${2:e})`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet cl "class" b
+class ${1:`!p
+snip.rv = snip.basename or "untitled"`} ${2:extends ${3:Parent} }${4:implements ${5:Interface} }{
+	$0
+}
+endsnippet
+
+snippet cos "constant string" b
+static public final String ${1:var} = "$2";$0
+endsnippet
+
+snippet co "constant" b
+static public final ${1:String} ${2:var} = $3;$0
+endsnippet
+
+snippet de "default" b
+default:
+	$0
+endsnippet
+
+snippet elif "else if" b
+else if ($1)`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet /el(se)?/ "else" br
+else`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet fi "final" b
+final 
+endsnippet
+
+snippet fore "for (each)" b
+for ($1 : $2)`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet for "for" b
+for ($1; $2; $3)`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet if "if" b
+if ($1)`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet imt "import junit_framework_TestCase;"  b
+import junit.framework.TestCase;
+$0
+endsnippet
+
+snippet im "import"  b
+import 
+endsnippet
+
+snippet in "interface" b
+interface ${1:`!p snip.rv = snip.basename or "untitled"`} ${2:extends ${3:Parent} }{
+	$0
+}
+endsnippet
+
+snippet j.b "java_beans_" i
+java.beans.
+endsnippet
+
+snippet j.i "java_io" i
+java.io.
+endsnippet
+
+snippet j.m "java_math" i
+java.math.
+endsnippet
+
+snippet j.n "java_net_" i
+java.net.
+endsnippet
+
+snippet j.u "java_util_"  i
+java.util.
+endsnippet
+
+snippet main "method (main)" b
+public static void main(String[] args)`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet m "method" b
+${1:void} ${2:method}($3) ${4:throws $5 }{
+	$0
+}
+
+endsnippet
+
+snippet pa "package" b
+package 
+endsnippet
+
+snippet p "print" b
+System.out.print($1);$0
+endsnippet
+
+snippet pl "println"  b
+System.out.println($1);$0
+endsnippet
+
+snippet pr "private" b
+private 
+endsnippet
+
+snippet po "protected" b
+protected 
+endsnippet
+
+snippet pu "public" b
+public 
+endsnippet
+
+snippet re "return" b
+return 
+endsnippet
+
+snippet st "static"
+static 
+endsnippet
+
+snippet sw "switch" b
+switch ($1)`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet sy "synchronized"
+synchronized 
+endsnippet
+
+snippet tc "test case"
+public class ${1:`!p snip.rv = snip.basename or "untitled"`} extends ${2:TestCase}`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet t "test" b
+public void test${1:Name}() throws Exception`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+snippet th "throw" b
+throw $0
+endsnippet
+
+snippet v "variable" b
+${1:String} ${2:var}${3: = ${0:null}};
+endsnippet
+
+snippet wh "while" b
+while ($1)`!p nl(snip)`{
+	$0
+}
+endsnippet
+
+# vim:ft=snippets:
