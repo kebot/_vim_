@@ -71,3 +71,9 @@
 	path = ultisnips
 	url = git://github.com/MarcWeber/ultisnips.git
 
+[submodule "vim-session"]
+	path = vim-session
+	url = git://github.com/xolox/vim-session.git
+[submodule "vim-misc"]
+	path = vim-misc
+	url = git://github.com/xolox/vim-misc.git
