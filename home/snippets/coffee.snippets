@@ -1,3 +1,39 @@
+# Custom bundle
+global !p
+import re
+_amd_special_modules = {
+  'jquery': '$',
+  'underscore': '_',
+}
+
+def define_requirements(args, snip):
+    for i in re.split('[\n\,]', args):
+        i = i.strip('\"\'\ \n')
+        if i:
+            snip += "  " + (_amd_special_modules.get(i) or i)
+endglobal
+
+# amd style module defination
+snippet define "Define a amd-style module" b
+define ${1:module_name\, }[
+  ${2:'backbone',
+  'jquery',
+  'underscore'}
+], (`!p
+define_requirements(t[2], snip)`
+)->
+  ${3}
+endsnippet
+
+snippet require "Require dependencies and run func" b
+require [
+  ${1}
+], (`!p
+define_requirements(t[1], snip)`
+)->
+  ${2}
+endsnippet
+
 # From the TextMate bundle
 
 snippet fun "Function" b
@@ -61,7 +97,7 @@ switch ${1:object}
 		${0:# body...}
 endsnippet
 
-snippet cla "Class" b
+snippet cl "Class" b
 class ${1:ClassName}${2: extends ${3:Ancestor}}
 
 	${4:constructor: (${5:args}) ->

@@ -11,11 +11,31 @@ set mouse=a
 " disable plugins (we use ultisnipmate instead)
 call janus#disable_plugin('vim-snippets')
 call janus#disable_plugin('vim-snipmate')
-
 call janus#disable_plugin('vroom')
-
+call janus#disable_plugin('riv.vim')
 " git://github.com/MarcWeber/ultisnips.git
-
 " it will slowdown vim
 " call janus#disable_plugin('jedi-vim')
+
+" config plugins for pysession
+
+python << EOF
+import os
+import os.path
+import vim
+
+# vim - session support
+session_dir = os.path.join(os.getcwd(), '.vimsessions')
+if os.path.isdir(session_dir): 
+  vim.command('let g:session_directory = "%s"' % session_dir )
+else:
+  pass
+
+# Virtualenv Support
+env_path = os.getenv('VIRTUAL_ENV')
+if env_path and os.path.isdir(env_path):
+  pyfile = os.path.join(env_path, 'bin', 'activate_this.py')
+  if os.path.exists(pyfile):
+    execfile(pyfile, dict(__file__=pyfile))
+EOF
 

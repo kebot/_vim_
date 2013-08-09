@@ -35,7 +35,7 @@ let g:snips_url ='http://kebot.me/'
 
 "g:always_use_first_snippet
 
-let g:UltiSnipsSnippetsDir = '~/.janus/home/UltiSnips'
+let g:UltiSnipsSnippetsDir = '~/.janus/home/snippets'
 let g:UltiSnipsSnippetDirectories = ["snippets"]
 let g:UltiSnipsDontReverseSearchPath="1"
 
@@ -97,6 +97,9 @@ let g:riv_python_rst_hl=1
 " @TODO uncomment below to auto-compiler the page.
 "au BufWritePost *.coffee silent CoffeeMake! | cwindow | redraw!
 au FileType coffee map <D-b> silent CoffeeMake! | cwindow | redraw!
+
+au FileType javascript set ts=4 sw=4
+au FileType mako set ts=4 sw=4
 
 "  fold by indentation in CoffeeScript files:
 au BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable

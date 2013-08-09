@@ -46,18 +46,18 @@ def get_style(snip):
 
 def format_arg(arg, style):
     if style == DOXYGEN:
-        return "@param %s @todo" % arg
+        return "@param %s @TODO" % arg
     elif style == SPHINX:
-        return ":param %s: @todo" % arg
+        return ":param %s: @TODO" % arg
     elif style == NORMAL:
-        return ":%s: @todo" % arg
+        return ":%s: @TODO" % arg
 
 
 def format_return(style):
     if style == DOXYGEN:
-        return "@return: @todo"
+        return "@return: @TODO"
     elif style in (NORMAL, SPHINX):
-        return ":returns: @todo"
+        return ":returns: @TODO"
 
 
 def write_docstring_args(args, snip):
@@ -78,7 +78,7 @@ def write_init_body(args, parents, snip):
     parents = [p for p in parents if p != 'object']
 
     for p in parents:
-        snip += p + ".__init__(self)"
+        snip += "super(%s, self).__init__()" % (p)
 
     if parents:
         snip.rv += '\n' + snip.mkline('', indent='')
@@ -97,12 +97,13 @@ endglobal
 # Class & Special Method Name Snippets #
 ########################################
 
-snippet class "class with docstrings" b
+snippet cl "class with docstrings" b
 class ${1:MyClass}(${2:object}):
 	"""${3:Docstring for $1 }"""
 
 	def __init__(self$4):
-		"""${5:@todo: to be defined}`!p
+		"""${5:@TODO: to be defined}`!p
+
 snip.rv = ""
 snip >> 2
 
@@ -116,7 +117,9 @@ if args:
 write_init_body(args, t[2], snip)
 `
 		$0
+
 endsnippet
+
 
 
 snippet slotclass "class with slots and docstrings" b
@@ -129,7 +132,7 @@ write_slots_args(args, snip)
 `
 
 	def __init__(self$4):
-		"""${5:@todo: to be defined}`!p
+		"""${5:@TODO: to be defined}`!p
 snip.rv = ""
 snip >> 2
 
@@ -331,7 +334,7 @@ snippet def "function with docstrings" b
 def ${1:function}(`!p
 if snip.indent:
    snip.rv = 'self' + (", " if len(t[2]) else "")`${2:arg1}):
-	"""${4:@todo: Docstring for $1}`!p
+	"""${4:@TODO: Docstring for $1}`!p
 snip.rv = ""
 snip >> 1
 
