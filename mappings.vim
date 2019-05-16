@@ -1,6 +1,37 @@
 " Janus Mappings https://github.com/carlhuda/janus/blob/master/janus/vim/core/before/plugin/mappings.vim
 
 ""
+" Keybindings
+let mapleader = ','
+
+" Moving Panels using alt-h,j,k,l
+" map <A-h> :wincmd h<CR>
+map ˙ :wincmd h<CR>
+" map <A-j> :wincmd j<CR>
+map ∆ :wincmd j<CR>
+" map <A-k> :wincmd k<CR>
+map ˚ :wincmd k<CR>
+" map <A-l> :wincmd l<CR>
+map ¬ :wincmd l<CR>
+" map <A-w> :q
+map ∑ :q<CR>
+" map <A-s> :w
+map ß :w<CR>
+
+" map <A-:num:> :setv
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+
+
 "" General Mappings (Normal, Visual, Operator-pending)
 ""
 map <leader>n :NERDTreeToggle<CR>
