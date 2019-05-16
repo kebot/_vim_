@@ -3,7 +3,7 @@
 call dein#add('scrooloose/nerdtree')
 
 " FZF: command line fuzzy finder
-call dein#add('/usr/local/opt/fzf')
+call dein#add('junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' })
 call dein#add('junegunn/fzf.vim')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

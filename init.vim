@@ -7,15 +7,15 @@ endif
 set runtimepath+=~/.config/nvim/bundles/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('~/.config/nvim/./bundles')
-  call dein#begin('~/.config/nvim/./bundles')
+if dein#load_state('~/.config/nvim/bundles')
+  call dein#begin('~/.config/nvim/bundles')
 
   " Let dein manage dein
   " Required:
-  call dein#add('~/.config/nvim/./bundles/repos/github.com/Shougo/dein.vim')
+  call dein#add('~/.config/nvim/bundles/repos/github.com/Shougo/dein.vim')
 
 	" Load extra plugin settings
-	source ./plugins.vim
+	source ~/.config/nvim/plugins.vim
 
 	" Required:
 	call dein#end()
@@ -33,6 +33,7 @@ endif
 
 "End dein Scripts-------------------------
 
-source ./settings.vim
-source ./mappings.vim
+
+source ~/.config/nvim/settings.vim
+source ~/.config/nvim/mappings.vim
 
